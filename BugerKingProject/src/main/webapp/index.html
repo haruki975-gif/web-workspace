@@ -4,7 +4,51 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+<style>
+	h1{
+		color:skyblue; 
+		text-align:center; 
+		font-size:80px;
+		width:700px;
+		height:360px;
+		border: 1px solid #ccc;
+		margin : auto;
+		line-height: 360px;
+		background-image : url('https://i.ytimg.com/vi/yxow4qJUJlU/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCYptX3bd_SYFKbkc_dN6_gwg0thA');
+		background-size : 100%;
+	}
+	button{
+		width : 150px;
+		height : 40px;
+		font-weight : bold;
+		font-size : 18px;
+		border : none;
+		background : darkgray;
+		color : white;
+		border-radius: 8px;
+		
+		&:hover{
+			cursor : pointer;
+			background-color : lightgray;
+		}
+		
+	}
+</style>
 <body>
-	<h1 style="color:skyblue; text-align:center; font-size:80px;">index화면</h1>
+	<h1></h1>
+	
+	<hr>
+	<script>
+		// console.log(location);
+		
+		// location 객체의 href속성에 요청 URL을 대입해줍니다.
+		
+		function forwardRequestPage(){
+			location.href = 'http://127.0.0.1/bk/static/Request_Page.html';
+		}
+	</script>
+	<button onclick="forwardRequestPage()">주문하기</button>
+	
+	
 </body>
 </html>
