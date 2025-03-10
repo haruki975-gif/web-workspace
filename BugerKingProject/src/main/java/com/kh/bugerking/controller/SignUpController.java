@@ -1,6 +1,8 @@
 package com.kh.bugerking.controller;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -56,7 +58,23 @@ public class SignUpController extends HttpServlet {
 		// ASP, PHP
 		// * Java 코드와 HTML을 분리하기 위한 기술
 		
+		// -------------------------------------------------
+		
+		// 응답화면(JSP)에서 필요한 데이터를 넘겨줄 것 -> request에 담아서
+		
+		// Attribute => 키 : 밸류 세트로 묶어서 값을 담을 수 있음
+		request.setAttribute("user", user);
+		request.setAttribute("message", "요청 처리에 성공했습니다.");
+		
+		// -------------------------------------------------
 		// 응답페이지를 JSP에게 위임(배정)
+		
+		// RequestDispatcher
+		RequestDispatcher view = request.getRequestDispatcher("/views/response_page.jsp");
+		// -> jsp가 작업을 처리할거야
+		// view // request, response
+		view.forward(request, response);
+		
 		
 		
 	}
