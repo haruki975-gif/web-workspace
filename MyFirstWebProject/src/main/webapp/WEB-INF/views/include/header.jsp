@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -99,24 +100,24 @@
           </li>
           
           
-          
-          <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" data-toggle="modal" data-target="#log-in">로그인</a>
-          </li>
-          <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="join">회원가입</a>
-          </li>
-          
-         
-
-          
-          <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="myPage">내정보</a>
-          </li>
-          <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="logout" onclick="return confirm('진짜로 로그아웃 하려고?')">로그아웃</a>
-          </li>
-          
+          <c:choose>
+          	<c:when test="${ empty loginMember }">
+	          <li class="nav-item">
+	          	<a class="nav-link js-scroll-trigger" data-toggle="modal" data-target="#log-in">로그인</a>
+	          </li>
+	          <li class="nav-item">
+	          	<a class="nav-link js-scroll-trigger" href="join">회원가입</a>
+	          </li>
+	      	</c:when>
+	      	<c:otherwise>  
+	          <li class="nav-item">
+	          	<a class="nav-link js-scroll-trigger" href="myPage">내정보</a>
+	          </li>
+	          <li class="nav-item">
+	          	<a class="nav-link js-scroll-trigger" href="logout" onclick="return confirm('진짜로 로그아웃 하려고?')">로그아웃</a>
+	          </li>
+          	</c:otherwise>
+          </c:choose>
           
         </ul>
       </div>
@@ -141,7 +142,7 @@
 			<!-- Modal body -->
 			<div class="modal-body">
 
-				<form action="로그인 매핑값" name="sign-in" method="post" id="signInForm"
+				<form action="/mfw/sign-in" name="sign-in" method="post" id="signInForm"
 					style="margin-bottom: 0;">
 					<table style="cellpadding: 0; cellspacing: 0; margin: 0 auto; width: 100%">
 						<tr>
@@ -150,7 +151,7 @@
 							</td>
 						</tr>
 						<tr>
-							<td><input type="text" name="" id="signInId"
+							<td><input type="text" name="memberId" id="signInId"
 								class="form-control tooltipstered" maxlength="10"
 								required="required" aria-required="true"
 								style="margin-bottom: 25px; width: 100%; height: 40px; border: 1px solid #d9d9de"
@@ -163,10 +164,9 @@
 						</tr>
 						<tr>
 							<td><input type="password" size="17" maxlength="20" id="signInPw"
-								name="" class="form-control tooltipstered" 
-								maxlength="20" required="required" aria-required="true"
+								name="memberPw" class="form-control tooltipstered" required="required" aria-required="true"
 								style="ime-mode: inactive; margin-bottom: 25px; height: 40px; border: 1px solid #d9d9de"
-								placeholder="최소 8자"></td>
+								placeholder="최소 20자"></td>
 						</tr>
 						<tr>
 							<td style="padding-top: 10px; text-align: center">
