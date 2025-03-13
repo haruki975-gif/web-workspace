@@ -28,4 +28,39 @@ public class MemberService {
 		MemberDTO loginMember = new MemberDAO().login(member);
 		return loginMember;
 	}
+	
+	
+	// INSERT 된 회원의 정보를 담아서 돌아가는게 좋음
+	// int(SQLException, 성공실패여부 알려줌)/void 두 타입
+	// DB에서 처리된 1행 또는 0행이 돌아옴
+	// 유효성 검사 + 검증하기 후 > 무조건 성공! (반환할 값이 없음!)
+	public int signUp(MemberDTO member) {
+		
+		// id 중복 검사 > DAO > 메모리에 올라가 있어야 함 > 객체 생성 후 메서드 호출
+		int result = new MemberDAO().checkId(member.getMemberId());
+		
+		// 중복되면 1이라는 정수값이 돌아감 / 아니면 0이라는 정수값이 돌아감
+		// 0이 돌아갔다면 성공, 1이면 실패
+		if(result > 0) {
+			return result;
+		}
+		
+		new MemberDAO().signUp(member);
+		return result;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
