@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.kh.mfw.member.model.dto.MemberDTO;
 import com.kh.mfw.member.model.service.MemberService;
@@ -60,14 +61,19 @@ public class LoginController extends HttpServlet {
 		 * 로그아웃 요청이 들어오거나, 브라우저를 종료하기 전까지는
 		 * 계속 사용할 수 있어야 하기 때문에,
 		 * Session이라는 저장소에 값을 담아둘 것.
+		 * Sesion에 담으려면 자바의 자료형을 알아야 함.
 		 */
-		request.getRequestDispatcher("index.jsp").forward(request, response);
+		// Session의 자료형 : HttpSession으로 저장함 => session.setAttribute()
+		HttpSession session = request.getSession();
+		session.setAttribute("loginMember", loginMember);
+		//request.getRequestDispatcher("index.jsp").forward(request, response);
 		
+		// http://localhost/mfw
+		// sendRedirect : Client에게 재 요청할 URL을 알려주어서
+		// Client가 다시 요청을 보내게 만드는 방법
 		
-		
-		
-		
-		
+		String contextPath = request.getContextPath();
+		response.sendRedirect(contextPath);
 	
 	}
 
