@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="memberMapper">
+<!-- namespace : 해당 mapper만을 식별하기 위한 고유 명칭 -->
+
+	<!-- 
+		* select
+		앞에서는 JDBC객체를 사용해서 영속성 작업을 하기 위해서
+		pstmt객체에 SQL문을 전달하여 위치홀더를 코드상에서 채워줬지만
+		MyBatis를 이용하면 위치홀더 대신 해당 SQL문에 전달된 객체로부터 값을 꺼내서 사용
+	 -->
+	
+	
+	
+	<select id="login" 
+			parameterType="com.kh.mfw.member.model.dto.MemberDTO"
+			resultType="com.kh.mfw.member.model.dto.MemberDTO">
+		select 
+			  MEMBER_ID memberId
+			, MEMBER_PW memberPw
+			, MEMBER_NAME memberName
+			, EMAIL
+			, ENROLL_DATE enrollDate
+		FROM 
+			KH_MEMBER 
+		WHERE
+			MEMBER_ID = #{ memberId }
+		AND
+			MEMBER_PW = #{ memberPw }
+	</select>
+	
+	
+</mapper>  
+

@@ -1,8 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ 
+<style>
+	.first-div{
+		border: 1px solid #ccc;
+		background-color: lightgray;
+		height: 300px;
+	}
+</style>
+
 <body id="page-top">
 
     <div class="container mt-5">
+    	<div class="mb-5 first-div">
+    	</div>
+    
 	  <div class="row">
 	    <div class="col-sm-4">
 	      <h2>About Me</h2>
