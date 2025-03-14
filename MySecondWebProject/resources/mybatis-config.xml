@@ -31,9 +31,12 @@
 	 			<property name="username" value="KH17_LEB" />
 	 			<property name="password" value="KH1234" />
 	 		</dataSource>
-	 		
 	 	</environment>
-	 	
 	 </environments>
+
+	<!-- mappers : 실행할 SQL문을 기록해둔 mapper파일을 등록 -->
+	<mappers>
+		<mapper resource="/mappers/member-mapper.xml" />
+	</mappers>
 
 </configuration>

@@ -20,10 +20,49 @@ public class MemberService {
 		
 		// DAO의 메서드 호출 = DAO객체와의 상호작용
 		// 유효성 검증 => 패스(원래 해야됨)
-		new MemberDAO().login(sqlSession, member);
+		// selectOne -> 조회 결과가 없으면 null 반환됨
+		MemberDTO loginMember = new MemberDAO().login(sqlSession, member);
 		
+		// 자원 반납 : sqlSession이 Connection, PreparedStatement, ResultSet 역할을 다 함
+		sqlSession.close();
 		
-		return null;
+		return loginMember;
 	}
+	
+	
+	// 의사 결정 코드
+	public int signUp(MemberDTO member) {
+		// 3차 유효성 검증(Java)
+		// 4차 데이터 무결성을 위한 제약조건(DBMS)
+		// 아이디 중복 검사
+		SqlSession sqlSession = getSqlSession();
+		
+		// boolean result = new MemberDAO().checkId(sqlSession, member.getMemberId());
+		// 아이디 중복 O
+		if(new MemberDAO().checkId(sqlSession, member.getMemberId())) {
+			sqlSession.close();
+			return 0;
+		}
+		
+		// 아이디 중복 X
+		new MemberDAO().signUp(sqlSession, member);
+		return 0;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 }
