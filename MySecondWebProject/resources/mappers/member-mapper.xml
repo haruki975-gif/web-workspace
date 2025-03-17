@@ -24,7 +24,6 @@
 		</select>
 		
 	 -->
-	
 	<select id="login" 
 			parameterType="com.kh.mfw.member.model.dto.MemberDTO"
 			resultType="com.kh.mfw.member.model.dto.MemberDTO">
@@ -42,6 +41,7 @@
 			MEMBER_PW = #{ memberPw }
 	</select>
 	
+	
 	<select id="checkId"
 			parameterType="string"
 			resultType="_int">
@@ -52,6 +52,21 @@
 		WHERE
 				MEMBER_ID = #{ memberId }
 	</select>
+	
+	
+	<insert id="signUp"
+			parameterType="memberDTO">
+		INSERT 
+		  INTO
+				KH_MEMBER
+		VALUES(
+				  #{ memberId }
+				, #{ memberPw }
+				, #{ memberName }
+				, #{ email }
+				, DEFAULT
+				)
+	</insert>
 	
 	
 </mapper>  

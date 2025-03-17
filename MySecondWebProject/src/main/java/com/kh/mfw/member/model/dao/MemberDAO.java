@@ -34,10 +34,8 @@ public class MemberDAO {
 	
 	
 	// 아이디 중복 없으면 INSERT
-	public int signUp(MemberDTO member) {
-		
-		
-		return 0;
+	public int signUp(SqlSession sqlSession, MemberDTO member) {
+		return sqlSession.insert("memberMapper.signUp", member);
 	}
 	
 	

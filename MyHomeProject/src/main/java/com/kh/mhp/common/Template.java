@@ -1,4 +1,4 @@
-package com.kh.mfw.common;
+package com.kh.mhp.common;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -9,21 +9,6 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 public class Template {
 
-	/*
-	 * JDBC Util
-	 * 
-	 * public static Connection getConnection(){
-	 * 	Connection conn = null;
-	 * 
-	 * try{
-	 * 	DriverManager.getConnection()
-	 * }catch(SQLException e){
-	 * 	e.print...
-	 * }
-	 * return conn;
-	 * } 
-	 */
-	
 	// MyBatis Framework Version
 	public static SqlSession getSqlSession() {
 		
@@ -32,11 +17,6 @@ public class Template {
 		try {
 			InputStream stream = Resources.getResourceAsStream("/mybatis-config.xml");
 			
-			// 1단게 : SqlSessionFactoryBuilder 객체 생성
-			// 		  그냥 생성자 호출하면 됨
-			// 2단계 : SqlSessionFactory 객체 생성
-			// 		  build(입력스트림) 스트림으로부터 환경설정파일의 값을 읽어오면셔 SqlSessionFactory객체 생성
-			// 3단계 : SqlSession 객체 생성
 			sqlSession = new SqlSessionFactoryBuilder().build(stream).openSession();
 			
 		} catch(IOException e) {
@@ -45,4 +25,5 @@ public class Template {
 		
 		return sqlSession;
 	}
+	
 }

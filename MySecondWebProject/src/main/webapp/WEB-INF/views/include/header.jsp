@@ -72,6 +72,19 @@
 </head>
 
 <body id="page-top">
+	
+	<c:if test="${ !empty sessionScope.message }">
+		<script>
+		// ${sessionScope.message} -> 서버 측 문자열
+		// alert('${sessionScope.message}'); -> 자바스크립트 문자열 ''로 감싸서 출력
+			alert('${sessionScope.message}');
+		</script>
+		
+		<!-- 1번 나오면 sessionScope의 message 값 비워주기 -->
+		<c:remove var="message" scope="session" />
+	</c:if>
+
+
 
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
@@ -93,7 +106,7 @@
             <a class="nav-link js-scroll-trigger" href="#">공지사항</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#">게시판</a>
+            <a class="nav-link js-scroll-trigger" href="boards?page=1">게시판</a>
           </li>
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#">사진게시판</a>

@@ -41,20 +41,24 @@
         <a class="nav-link" href="#">게시판</a>
       </li>
       
-      
-      <li class="nav-item">
-        <a class="nav-link js-scroll-trigger" data-toggle="modal" data-target="#log-in">로그인</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="join">회원가입</a>
-      </li>
-      
-      <li class="nav-item">
-        <a class="nav-link" href="myPage">내 정보</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="logout" onclick="return confrim('로그아웃 하시겠습니까?')">로그아웃</a>
-      </li>
+      <c:choose>
+	      <c:when test="${ empty loginMember }">
+		      <li class="nav-item">
+		        <a class="nav-link js-scroll-trigger" data-toggle="modal" data-target="#log-in">로그인</a>
+		      </li>
+		      <li class="nav-item">
+		        <a class="nav-link" href="join">회원가입</a>
+		      </li>
+		  </c:when>
+		  <c:otherwise>
+		      <li class="nav-item">
+		        <a class="nav-link" href="myPage">내 정보</a>
+		      </li>
+		      <li class="nav-item">
+		        <a class="nav-link" href="logout" onclick="return confrim('로그아웃 하시겠습니까?')">로그아웃</a>
+		      </li>
+		  </c:otherwise>
+	  </c:choose>
       
     </ul>
   </div>
@@ -76,7 +80,7 @@
 			<!-- Modal body -->
 			<div class="modal-body">
 
-				<form action="/mfw/sign-in" name="sign-in" method="post" id="signInForm"
+				<form action="/mhp/sign-in" name="sign-in" method="post" id="signInForm"
 					style="margin-bottom: 0;">
 					<table style="cellpadding: 0; cellspacing: 0; margin: 0 auto; width: 100%">
 						<tr>

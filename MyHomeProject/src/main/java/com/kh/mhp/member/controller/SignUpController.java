@@ -6,16 +6,15 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.kh.mhp.member.model.dto.MemberDTO;
 import com.kh.mhp.member.model.service.MemberService;
 
-@WebServlet("/sign-in")
-public class LoginController extends HttpServlet {
+@WebServlet("/sign-up")
+public class SignUpController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public LoginController() {
+    public SignUpController() {
         super();
     }
 
@@ -24,17 +23,18 @@ public class LoginController extends HttpServlet {
 		
 		String memberId = request.getParameter("memberId");
 		String memberPw = request.getParameter("memberPw");
-
-		MemberDTO member = new MemberDTO();
-		member.setMemberId(memberId);
-		member.setMemberPw(memberPw);
+		String memberName = request.getParameter("memberName");
+		String memberEmail = request.getParameter("email");
 		
-		MemberDTO loginMember = new MemberService().login(member);
-		HttpSession session = request.getSession();
-		session.setAttribute("loginMember", loginMember);
+		MemberDTO member = new MemberDTO(memberId, memberPw, memberName, memberEmail, null);
 		
-		String contextPath = request.getContextPath();
-		response.sendRedirect(contextPath);
+		int result = new MemberService().signUp(member);
+		String path = request.getContextPath();
+		
+		if(result == 0) {
+			request.getSession().setAttribute("message", "중복된 아이디입니다. 다른 아이디를 입력해주세요.");
+		}
+		response.sendRedirect(result != 0 ? path + "/join" : path);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

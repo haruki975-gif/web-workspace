@@ -45,8 +45,13 @@ public class MemberService {
 		}
 		
 		// 아이디 중복 X
-		new MemberDAO().signUp(sqlSession, member);
-		return 0;
+		int result = new MemberDAO().signUp(sqlSession, member);
+		
+		// 수동 커밋이면 커밋해줘야함. Connection = sqlSession
+		sqlSession.commit();
+		sqlSession.close();
+		
+		return result;
 	}
 	
 	

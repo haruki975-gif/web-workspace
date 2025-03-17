@@ -21,24 +21,26 @@
 	      <h5>Photo of me:</h5>
 	      <div class="fakeimg">Fake Image</div>
 	      <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
-	      <h3 class="mt-4">Some Links</h3>
-	      <p>Lorem ipsum dolor sit ame.</p>
+	      
+	      <h3 class="mt-4">BookStore Links</h3>
 	      <ul class="nav nav-pills flex-column">
 	        <li class="nav-item">
-	          <a class="nav-link active" href="#">Active</a>
+	          <a class="nav-link active" href="https://www.kyobobook.co.kr/">교보문고</a>
 	        </li>
 	        <li class="nav-item">
-	          <a class="nav-link" href="#">Link</a>
+	          <a class="nav-link" href="https://www.ypbooks.co.kr/">영풍문고</a>
 	        </li>
 	        <li class="nav-item">
-	          <a class="nav-link" href="#">Link</a>
+	          <a class="nav-link" href="https://www.yes24.com/">예스24</a>
 	        </li>
 	        <li class="nav-item">
-	          <a class="nav-link disabled" href="#">Disabled</a>
+	          <a class="nav-link" href="https://www.aladin.co.kr/">알라딘</a>
 	        </li>
 	      </ul>
+	      
 	      <hr class="d-sm-none">
 	    </div>
+	    
 	    <div class="col-sm-8">
 	      <h2>TITLE HEADING</h2>
 	      <h5>Title description, Dec 7, 2020</h5>
